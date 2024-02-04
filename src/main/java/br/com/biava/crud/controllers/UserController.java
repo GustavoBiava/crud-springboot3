@@ -16,7 +16,6 @@ import br.com.biava.crud.model.User;
 import br.com.biava.crud.services.UserService;
 
 
-
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
@@ -28,8 +27,8 @@ public class UserController {
     public ResponseEntity<List<User>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
-    
-    @PostMapping(value = "insert")
+
+    @PostMapping(value = "/insert")
     public ResponseEntity<User> insert(@RequestBody User user) {
         return ResponseEntity.ok().body(service.insert(user));
     }
@@ -39,6 +38,9 @@ public class UserController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
-    
-    
+
+    @GetMapping(value = "/findById")
+    public ResponseEntity<User> findById(@RequestParam(value = "id") Long id) {
+        return ResponseEntity.ok().body(service.findById(id));
+    }
 }

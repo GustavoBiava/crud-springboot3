@@ -2,7 +2,6 @@ package br.com.biava.crud.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

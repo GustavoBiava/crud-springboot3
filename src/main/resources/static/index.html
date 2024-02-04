@@ -8,10 +8,10 @@
     <title>CRUD</title>
 </head>
 <body>
-    <form>
+    <form id="mainForm">
         <div class="mb-3">
             <label for="id" class="form-label">Id</label>
-            <input type="text" class="form-control" id="name" readonly>
+            <input type="text" class="form-control" id="id" readonly>
         </div>
 
         <div class="mb-3">
@@ -24,7 +24,8 @@
           <input type="text" class="form-control" id="birthDate" placeholder="Insira a data de nascimento...">
         </div>
 
-        <button type="submit" class="btn btn-primary" onclick="salvar()">Salvar</button>
+        <button type="button" class="btn btn-primary" onclick="salvar()">Salvar</button>
+        <button type="button" class="btn btn-danger" onclick="document.getElementById('mainForm').reset();">Novo</button>
 
       </form>
 
@@ -34,15 +35,28 @@
 
 <script type="text/javascript">
 
-    function salvar() {
+        let id = $("#id").val();
         let name = $("#name").val();
-        alert(name);
+        let birthDate = $("#birthDate").val();
+
+
+    function salvar() {
+        
+        $.ajax ({
+            method : "POST",
+            url : "users/insert",
+            data : JSON.stringify({id : id, name : name, birthDate : birthDate}),
+            contentType : "application/json; charset-utf-8",
+            success : function (response) {
+                $("#id").val(response.id);
+                alert("Salvo com sucesso! Id = " + response.id);
+            }
+        }).fail(function (xhr, status, errorThrown) {
+            alert("Erro ao salvar o usuário! " + xhr.responseText);
+        })
     }
 
 
 </script>
-
-
-
 
 </html>

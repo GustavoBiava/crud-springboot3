@@ -31,4 +31,8 @@ public class UserService {
         Optional<User> user = repository.findById(id);
         return user.orElseThrow(() -> new RuntimeException());
     }
+
+    public User update(User user) {
+       return repository.saveAndFlush(user);
+    }
 }

@@ -35,4 +35,8 @@ public class UserService {
     public User update(User user) {
        return repository.saveAndFlush(user);
     }
+
+    public List<User> findByWord(String string) {
+        return repository.findByNameContainingIgnoreCase(string.trim());
+    }
 }

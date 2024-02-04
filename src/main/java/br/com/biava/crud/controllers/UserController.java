@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.biava.crud.model.User;
 import br.com.biava.crud.services.UserService;
 
-
-
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
@@ -51,4 +49,10 @@ public class UserController {
         service.update(user);
         return ResponseEntity.ok().body(user);
     }
+
+    @GetMapping(value = "/findByWord")
+    public ResponseEntity<List<User>> findByWord(@RequestParam(value = "name") String string) {
+        return ResponseEntity.ok().body(service.findByWord(string));
+    }
+
 }

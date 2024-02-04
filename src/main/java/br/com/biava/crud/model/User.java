@@ -2,6 +2,9 @@ package br.com.biava.crud.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,14 +22,16 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private LocalDate birtDate;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate birthDate;
 
     public User() {
     }
 
-    public User(String name, LocalDate birtDate) {
+    public User(String name, LocalDate birthDate) {
         this.name = name;
-        this.birtDate = birtDate;
+        this.birthDate = birthDate;
     }
 
     public Long getId() {
@@ -45,12 +50,12 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public LocalDate getBirtDate() {
-        return birtDate;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirtDate(LocalDate birtDate) {
-        this.birtDate = birtDate;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     @Override

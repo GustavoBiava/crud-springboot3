@@ -26,7 +26,9 @@
 
         <button type="button" class="btn btn-primary" onclick="insert()">Salvar</button>
         <button type="button" class="btn btn-danger" onclick="document.getElementById('mainForm').reset();">Novo</button>
+        <button type="button" class="btn btn-warning" onclick="deleteByButton()">Deletar</button>
         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#userModal">Pesquisar</button>
+        
       </form>
 
       <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -106,7 +108,7 @@
                     $("#modalTable > tbody > tr").remove();
 
                     response.forEach(user => {
-                        $("#modalTable > tbody").append("<tr><td>" + user.id + "</td><td>" + user.name + "</td><td>" + user.birthDate + "</td><td> <button type='button' class='btn btn-primary' onclick='edit(" + user.id + ")''>Editar</button></td><td> <button type='button' class='btn btn-primary' onclick='insert()''>Editar</button></td></tr>");
+                        $("#modalTable > tbody").append("<tr id = '" + user.id+ "'><td>" + user.id + "</td><td>" + user.name + "</td><td>" + user.birthDate + "</td><td> <button type='button' class='btn btn-primary' onclick='edit(" + user.id + ")'>Editar</button></td><td> <button type='button' class='btn btn-primary' onclick='exclude(" + user.id + ")'>Excluir</button></td></tr>");
                     });
                 }
             }).fail(function (xhr, status, errorThrown) {
@@ -131,13 +133,30 @@
                 alert("Erro ao salvar o usuário! " + xhr.responseText);
             })
         }
-    
-    
+
+        function exclude(id) {
+
+            if(confirm("Deseja realmente deletar?")) {
+
+            $.ajax ({
+                method : "DELETE",
+                url : "users",
+                data:  "id=" + id,
+                success : function (response) {
+                    $("#" + id).remove();
+                }
+            }).fail(function (xhr, status, errorThrown) {
+                alert("Erro ao excluir o usuário! " + xhr.responseText);
+            })
+            }
+        }
+
+        function deleteByButton() {
+            let id = $("#id").val();
+            exclude(id);
+            document.getElementById('mainForm').reset();
+        }
     </script>
 
-
 </body>
-
-
-
 </html>

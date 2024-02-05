@@ -51,8 +51,7 @@ public class User implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    
     public LocalDate getBirthDate() {
         return birthDate;
     }

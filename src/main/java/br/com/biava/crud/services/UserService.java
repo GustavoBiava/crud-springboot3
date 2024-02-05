@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.biava.crud.model.User;
 import br.com.biava.crud.repositories.UserRepository;
+import br.com.biava.crud.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -24,12 +25,17 @@ public class UserService {
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        if(repository.existsById(id)) {
+            repository.deleteById(id);
+        }
+        else {
+            throw new ResourceNotFoundException("Invalid id! Id = " + id);
+        }
     }
 
     public User findById(Long id) {
         Optional<User> user = repository.findById(id);
-        return user.orElseThrow(() -> new RuntimeException());
+        return user.orElseThrow(() -> new ResourceNotFoundException("Invalid id! Id = " + id));
     }
 
     public User update(User user) {

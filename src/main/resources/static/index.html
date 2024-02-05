@@ -11,10 +11,6 @@
             margin-left: 5%;
             margin-right: 5%;
         }
-
-
-
-
     </style>
 
     <title>CRUD - Usuários</title>
@@ -28,12 +24,12 @@
 
         <div class="mb-3">
           <label for="userName" class="form-label">Nome do Usuário:</label>
-          <input type="text" class="form-control" id="name" placeholder="Insira o nome do usuário...">
+          <input type="text" class="form-control" id="name" placeholder="Insira o nome do usuário..." required>
         </div>
 
         <div class="mb-3">
           <label for="birthDate" class="form-label">Data de Nascimento:</label>
-          <input type="text" class="form-control" id="birthDate" placeholder="Insira a data de nascimento...">
+          <input type="text" class="form-control" id="birthDate" placeholder="Insira a data de nascimento..." required>
         </div>
 
         <button type="button" class="btn btn-primary" onclick="insert()">Salvar</button>
@@ -88,7 +84,7 @@
     <script type="text/javascript">
 
         function insert() {
-    
+            
             let id = $("#id").val();
             let name = $("#name").val();
             let birthDate = $("#birthDate").val();

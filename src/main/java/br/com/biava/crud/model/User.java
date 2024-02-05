@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.NonNull;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,9 +21,11 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NonNull
     private String name;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NonNull
     private LocalDate birthDate;
 
     public User() {
@@ -49,6 +52,7 @@ public class User implements Serializable {
         this.name = name;
     }
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     public LocalDate getBirthDate() {
         return birthDate;
     }

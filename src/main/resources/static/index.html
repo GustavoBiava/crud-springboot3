@@ -33,8 +33,7 @@
             border: none;
             font-weight: bold;
         }
-        
-        
+
     </style>
     
     <title>CRUD - Usuários</title>
@@ -76,7 +75,7 @@
                         <div class="mb-3">
                             <label for="searchName" class="col-form-label">Nome do Usuário:</label>
                             <input type="text" class="form-control" id="searchName" placeholder="Insira o nome do usuário que deseja pesquisar...">
-                            <button type="button" class="btn btn-primary" onclick="findByName()">Pesquisar</button>
+                            <button type="button" class="btn btn-primary" onclick="findByName()" style="margin-top: 7px; margin-left: 78.5%; margin-right: 7px;">Pesquisar</button>
                         </div>
                         
                         <div id="divTable">
@@ -109,24 +108,24 @@
     <script type="text/javascript">
         
         function insert() {
-            
+
             let id = $("#id").val();
             let name = $("#name").val();
             let birthDate = $("#birthDate").val();
-            
-            $.ajax ({
-                method : "POST",
-                url : "users/insert",
-                data : JSON.stringify({id : id, name : name, birthDate : birthDate}),
-                contentType : "application/json; charset-utf-8",
-                success : function (response) {
-                    $("#id").val(response.id);
-                    alert("Salvo com sucesso! Id = " + response.id);
-                }
-            }).fail(function (xhr, status, errorThrown) {
-                alert("Erro ao salvar o usuário! " + xhr.responseText);
-            })
-        }
+
+                $.ajax ({
+                    method : "POST",
+                    url : "users/insert",
+                    data : JSON.stringify({id : id, name : name, birthDate : birthDate}),
+                    contentType : "application/json; charset-utf-8",
+                    success : function (response) {
+                        $("#id").val(response.id);
+                        alert("Salvo com sucesso! Id = " + response.id);
+                    }
+                }).fail(function (xhr, status, errorThrown) {
+                    alert("Você não salvar um usuário com algum campo nulo!");
+                })
+            }
         
         function findByName() {
             
@@ -177,7 +176,7 @@
                         $("#" + id).remove();
                     }
                 }).fail(function (xhr, status, errorThrown) {
-                    alert("Erro ao excluir o usuário! " + xhr.responseText);
+                    alert("Erro ao excluir o usuário!");
                 })
             }
         }

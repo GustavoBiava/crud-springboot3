@@ -3,9 +3,7 @@ package br.com.biava.crud.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.NonNull;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,10 +20,10 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
+    @Column(nullable = false)
     private String name;
 
-    @NonNull
+    @Column(nullable = false)
     private LocalDate birthDate;
 
     public User() {
@@ -51,7 +49,7 @@ public class User implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public LocalDate getBirthDate() {
         return birthDate;
     }

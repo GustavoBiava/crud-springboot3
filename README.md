@@ -30,7 +30,7 @@ O projeto foi construído ao decorrer das aulas do curso CRUD Completo com Sprin
 ## Como rodar?
 
 ### Requisitos:
-- Java RE
+- Java Runtime Environment (Java RE)
 - Apache Maven
 
 #### 1 - Inicie um repositório git e dê um git clone no repositório:

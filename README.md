@@ -22,7 +22,7 @@ O projeto foi construído ao decorrer das aulas do curso CRUD Completo com Sprin
 - Maven
 - JPA/Hibernate
 - JavaScript
-- JQUery
+- JQuery
 - HTML
 - CSS
 - Bootstrap

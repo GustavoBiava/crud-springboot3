@@ -47,9 +47,9 @@ mvn spring-boot:run
 http://localhost:8080/crud-jdev/
 ```
 ### Observações!
-- Mude as configurações do banco de dados dentro do arquivo <b>application.properties</b>, presente no diretório: <b>crud-springboot3/src/main/resources/application.properties</b>
 - Caso deseje mudar a porta em que a aplicação roda, altere o valor da propriedade <b>server.port</b> informando a porta desejada
-
+- Caso deseje encerrar a aplicação, aperte Ctrl + C e confirme a parada no terminal
+- Mude as configurações do banco de dados dentro do arquivo <b>application.properties</b>, presente no diretório: <b>crud-springboot3/src/main/resources/application.properties</b>
 #### Arquivo application.properties
 ```
 #PostgreSQL
@@ -63,5 +63,7 @@ server.servlet.context-path=/crud-jdev
 
 server.port=8080
 ```
+
+
 ## Agradecimentos
 Agradeço primeiramente ao Prof. Alex Fernando Egídio por sua dedicação durante as aulas, e agradeço também você leitor por sua atenção. Obrigado!
